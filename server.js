@@ -1,22 +1,15 @@
 const express = require("express");
 const app = express();
 
-// middleware (opcional mas bom já ter)
-app.use(express.json());
-
-// rota principal (teste)
+// rota simples
 app.get("/", (req, res) => {
-  res.status(200).send("Viralizou backend rodando 🚀");
+  res.send("Viralizou backend rodando 🚀");
 });
 
-// rota healthcheck (pra garantir que Railway reconhece)
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
-});
+// 🔥 IMPORTANTE (compatível com Railway e local)
+const PORT = process.env.PORT || 3000;
 
-// 🔥 MUITO IMPORTANTE (porta dinâmica do Railway)
-const PORT = process.env.PORT;
-
-app.listen(PORT, () => {
-  console.log("Servidor rodando na porta " + PORT);
+// escutar na porta correta
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("Rodando na porta " + PORT);
 });
