@@ -5,7 +5,8 @@ app.get("/", (req, res) => {
   res.send("Viralizou backend rodando 🚀");
 });
 
-const PORT = process.env.PORT || 3000;
+// 🔥 ISSO É O MAIS IMPORTANTE
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log("Rodando na porta " + PORT);
